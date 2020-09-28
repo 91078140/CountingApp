@@ -1,14 +1,18 @@
 package com.example.countingapp;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
+    int num = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,11 +28,27 @@ public class MainActivity extends AppCompatActivity {
 
     public void onClickFirstBtn(View view)
     {
-        Toast.makeText(this, "You clicked the first button", Toast.LENGTH_LONG).show();
+        num++;
+        TextView tally = findViewById(R.id.introTV);
+        tally.setText("You have " + num + " goldfish.");
+        //Toast.makeText(this, "You clicked the first button", Toast.LENGTH_LONG).show();
     }
 
     public void onClickSecondBtn(View view)
     {
-        Toast.makeText(this, "You clicked the second button", Toast.LENGTH_SHORT).show();
+        num--;
+        //Toast.makeText(this, "You clicked the second button", Toast.LENGTH_SHORT).show();
     }
+
+    public void onClickGoScreen2(View view)
+    {
+        startActivity(new Intent(MainActivity.this, screen2.class));
+    }
+
+    /*public void openDialogue(View view)
+    {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage("Confirm reset");
+
+    }*/
 }
