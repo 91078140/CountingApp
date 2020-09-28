@@ -3,6 +3,7 @@ package com.example.countingapp;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -29,16 +30,14 @@ public class MainActivity extends AppCompatActivity {
     public void onClickFirstBtn(View view)
     {
         num++;
-        TextView tally = findViewById(R.id.introTV);
-        tally.setText("You have " + num + " goldfish.");
+        updateIntroTV();
         //Toast.makeText(this, "You clicked the first button", Toast.LENGTH_LONG).show();
     }
 
     public void onClickSecondBtn(View view)
     {
         num--;
-        TextView tally = findViewById(R.id.introTV);
-        tally.setText("You have " + num + " goldfish.");
+        updateIntroTV();
         //Toast.makeText(this, "You clicked the second button", Toast.LENGTH_SHORT).show();
     }
 
@@ -47,10 +46,29 @@ public class MainActivity extends AppCompatActivity {
         startActivity(new Intent(MainActivity.this, screen2.class));
     }
 
-    /*public void openDialogue(View view)
+    public void openDialogue(View view)
     {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setMessage("Confirm reset");
+        builder.setPositiveButton("yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                num = 0;
+                updateIntroTV();
+            }
+        });
+        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
 
-    }*/
+            }
+        });
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
+    }
+    private void updateIntroTV()
+    {
+        TextView tally = findViewById(R.id.introTV);
+        tally.setText("You have " + num + " goldfish.");
+    }
 }

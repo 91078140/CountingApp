@@ -34,6 +34,14 @@
         android:onClick="onClickSecondBtn"
         android:text="Subtract 1" />
 
+    <Button
+        android:id="@+id/resetBtn"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:onClick="openDialogue"
+        android:text="Reset Counter" />
+
     <ImageView
         android:id="@+id/goldfishIV"
         android:layout_width="match_parent"
