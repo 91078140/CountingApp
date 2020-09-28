@@ -37,6 +37,8 @@ public class MainActivity extends AppCompatActivity {
     public void onClickSecondBtn(View view)
     {
         num--;
+        TextView tally = findViewById(R.id.introTV);
+        tally.setText("You have " + num + " goldfish.");
         //Toast.makeText(this, "You clicked the second button", Toast.LENGTH_SHORT).show();
     }
 
